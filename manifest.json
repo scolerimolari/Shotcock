@@ -1,0 +1,9 @@
+{
+  "name": "Shotcock Golf Improvement",
+  "short_name": "Shotcock",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#06111c",
+  "theme_color": "#06111c",
+  "description": "Better Practice. Lower Scores."
+}
