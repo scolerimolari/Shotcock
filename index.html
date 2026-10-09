@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06111c">
+<meta name="description" content="Shotcock golf improvement tracker — better practice, lower scores.">
+<link rel="manifest" href="manifest.json">
+<title>Shotcock — Better Practice. Lower Scores.</title>
+<style>
+:root{--bg:#06111c;--panel:#0b1926;--panel2:#0d2030;--line:#19364a;--text:#f4f8ff;--muted:#a6b7c9;--green:#26e6a0;--blue:#2b91ff;--purple:#a45cff;--yellow:#ffbd2e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#10283a 0,#06111c 55%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#07131ff2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:800;letter-spacing:-.7px}.logo{display:grid;place-items:center;width:38px;height:38px;border:3px solid var(--green);border-radius:50%;color:var(--green);font-size:22px}.tag{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}
+main{max-width:1100px;margin:auto;padding:16px 14px 90px}.hero{border:1px solid #244b5b;border-radius:18px;padding:24px 20px;background:linear-gradient(100deg,#07131ee8,#07131e55),url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1400&q=80') center/cover;min-height:155px;display:flex;align-items:center;justify-content:space-between;gap:15px}.hero h1{margin:0 0 6px;font-size:clamp(25px,5vw,36px);line-height:1.1}.hero p{margin:0;color:#e1ebf4;max-width:430px}.hcp{background:#07131ee8;border:1px solid var(--line);border-radius:14px;padding:14px;min-width:125px}.hcp small{color:var(--muted)}.hcp strong{display:block;font-size:30px}
+nav{display:flex;gap:7px;overflow-x:auto;padding:13px 0 16px;scrollbar-width:none}nav button,.secondary{background:#0b1b29;color:var(--muted);border:1px solid var(--line);border-radius:11px;padding:10px 13px;white-space:nowrap}nav button.active{background:#064b3a;color:var(--green);border-color:#0c9e70}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#0c1b29,#081521);border:1px solid var(--line);border-radius:15px;padding:15px;min-width:0}.metric .icon{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:#064b3a;color:var(--green);font-size:19px}.metric h3{font-size:13px;color:var(--muted);font-weight:600;margin:10px 0 3px}.metric strong{font-size:27px}.metric small{display:block;color:var(--green)}.section{margin-top:13px}.section h2{font-size:17px;margin:0 0 12px}.two{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.barrow{display:grid;grid-template-columns:74px 1fr 32px;gap:8px;align-items:center;margin:12px 0;font-size:13px;color:var(--muted)}.bar{height:8px;border-radius:99px;background:#142a3b;overflow:hidden}.bar span{display:block;height:100%;background:var(--green);border-radius:99px}.empty{color:var(--muted);font-size:14px}.round{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.round:last-child{border:0}.round strong{font-size:20px}.round small{display:block;color:var(--muted)}.pill{color:var(--green);font-size:12px}.focus{display:flex;gap:10px;margin:12px 0}.num{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:50%;background:var(--green);color:#052218;font-weight:800}.focus p{margin:0;font-size:14px}.focus small{display:block;color:var(--muted);margin-top:3px}.btn{border:0;background:var(--green);color:#032217;font-weight:800;padding:12px 15px;border-radius:11px;width:100%;margin-top:8px}.btn.blue{background:#1679d8;color:white}.btn.ghost{background:#102537;color:var(--text);border:1px solid var(--line)}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.actions .btn{margin:0}.field{display:grid;gap:6px;margin:11px 0;color:var(--muted);font-size:13px}.field input,.field select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#06111c;color:var(--text)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hidden{display:none!important}.notice{border:1px solid #1b644e;background:#08271f;color:#b6f8de;padding:11px;border-radius:10px;font-size:13px;margin:10px 0}.footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 0}.footer span{color:var(--green)}.smallbtn{background:transparent;border:1px solid var(--line);color:var(--muted);padding:7px 9px;border-radius:8px}.danger{color:#ff9292}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column;padding:20px}.hcp{display:flex;align-items:center;gap:10px;padding:8px 12px}.hcp strong{font-size:23px}.hcp small{max-width:100px}.formgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.grid{gap:8px}.card{padding:12px}.metric strong{font-size:24px}.brand{font-size:20px}}
+</style>
+</head>
+<body>
+<header><div><div class="brand"><span class="logo">⚑</span><span>Shotcock<div class="tag">Better Practice. Lower Scores.</div></span></div></div><button class="smallbtn" id="exportBtn">Export data</button></header>
+<main>
+<section class="hero"><div><h1 id="greeting">Build a better game.</h1><p>Your golf improvement hub. Track rounds, spot patterns, and make every practice session count.</p></div><div class="hcp"><small>Target handicap</small><strong id="hcpDisplay">28</strong><small>Set your own goal</small></div></section>
+<nav id="nav"><button class="active" data-page="dashboard">⌂ Dashboard</button><button data-page="rounds">⚑ Rounds</button><button data-page="practice">◎ Practice</button><button data-page="bag">♧ My Bag</button><button data-page="goals">✧ Goals & Stats</button></nav>
+<section id="dashboard" class="page">
+<div class="grid">
+<div class="card metric"><div class="icon">◎</div><h3>Rounds logged</h3><strong id="roundCount">0</strong><small>Keep building your record</small></div>
+<div class="card metric"><div class="icon" style="background:#102e50;color:var(--blue)">⌁</div><h3>Average score</h3><strong id="avgScore">—</strong><small>Across saved rounds</small></div>
+<div class="card metric"><div class="icon" style="background:#30204a;color:var(--purple)">⚑</div><h3>Practice sessions</h3><strong id="practiceCount">0</strong><small>Consistency beats intensity</small></div>
+<div class="card metric"><div class="icon" style="background:#443315;color:var(--yellow)">↗</div><h3>Handicap goal</h3><strong id="goalDisplay">20</strong><small>Editable in Goals & Stats</small></div>
+</div>
+<div class="two section">
+<div class="card"><h2>Recent rounds</h2><div id="recentRounds" class="empty">No rounds yet. Log your first round to start seeing progress.</div><button class="btn" data-goto="rounds">＋ Log a round</button></div>
+<div class="card"><h2>Practice focus</h2><div class="focus"><span class="num">1</span><p><b>Track your biggest miss</b><small>After each round, note one pattern you want to improve.</small></p></div><div class="focus"><span class="num">2</span><p><b>Make practice measurable</b><small>Record what you worked on and how long you spent.</small></p></div><div class="focus"><span class="num">3</span><p><b>Review the trend</b><small>Use your round history to guide the next session.</small></p></div><button class="btn ghost" data-goto="practice">Plan practice</button></div>
+</div>
+<div class="card section"><h2>Scoring trend</h2><div id="trend" class="empty">Your scoring trend will appear here after you log rounds.</div></div>
+</section>
+<section id="rounds" class="page hidden">
+<div class="card"><h2>Log a round</h2><p class="empty">Enter a completed round. This first version saves data on this device.</p><form id="roundForm"><div class="formgrid"><label class="field">Course name<input required name="course" placeholder="e.g. Ballyclare"></label><label class="field">Date<input required name="date" type="date"></label><label class="field">Total score<input required name="score" type="number" min="40" max="200" placeholder="92"></label><label class="field">Putts<input name="putts" type="number" min="0" max="80" placeholder="34"></label><label class="field">Fairways hit<input name="fairways" type="number" min="0" max="14" placeholder="6"></label><label class="field">Greens in regulation<input name="gir" type="number" min="0" max="18" placeholder="4"></label></div><label class="field">Biggest thing to work on<select name="focus"><option>Driving accuracy</option><option>Approach shots</option><option>Short game</option><option>Putting</option><option>Course management</option></select></label><label class="field">Notes<input name="notes" placeholder="What went well? What needs work?"></label><button class="btn">Save round</button></form></div>
+<div class="card section"><h2>All rounds</h2><div id="allRounds" class="empty">Your saved rounds will appear here.</div></div>
+</section>
+<section id="practice" class="page hidden">
+<div class="card"><h2>Log a practice session</h2><form id="practiceForm"><div class="formgrid"><label class="field">Date<input required name="date" type="date"></label><label class="field">Duration (minutes)<input required name="minutes" type="number" min="5" max="600" value="30"></label></div><label class="field">Practice area<select name="area"><option>Driving accuracy</option><option>5 wood consistency</option><option>Iron striking</option><option>Wedges / distance control</option><option>Putting</option><option>Chipping</option><option>Course management</option></select></label><label class="field">Session notes<input name="notes" placeholder="Drills, feels, results…"></label><button class="btn">Save practice session</button></form></div><div class="card section"><h2>Practice history</h2><div id="allPractice" class="empty">No sessions logged yet.</div></div>
+</section>
+<section id="bag" class="page hidden">
+<div class="card"><h2>My Bag</h2><p class="empty">Edit the sample clubs to match your current setup.</p><form id="bagForm"><div class="formgrid"><label class="field">Club<input required name="club" placeholder="e.g. 5 Wood"></label><label class="field">Make / model<input name="model" placeholder="e.g. Ping G430 Max"></label><label class="field">Carry distance (yards)<input name="distance" type="number" min="0" max="400" placeholder="180"></label><label class="field">Notes<input name="notes" placeholder="Loft, shaft, confidence…"></label></div><button class="btn">Add club</button></form><div id="bagList" style="margin-top:12px"></div></div>
+</section>
+<section id="goals" class="page hidden">
+<div class="card"><h2>Goals & Stats</h2><form id="goalForm"><label class="field">Current handicap index (optional)<input name="hcp" type="number" min="0" max="54" step="0.1" placeholder="28"></label><label class="field">Target handicap<input required name="goal" type="number" min="0" max="54" step="0.1" value="20"></label><label class="field">Main goal<input name="text" placeholder="e.g. Play more consistently"></label><button class="btn">Save goals</button></form><div class="section" id="statsSummary"></div></div>
+<div class="card section"><h2>Your data</h2><p class="empty">Your entries are stored locally in this browser. Export a backup regularly. This version does not yet sync between devices or create accounts.</p><button class="btn ghost" id="exportBtn2">Export backup (JSON)</button><button class="btn ghost" id="importBtn">Import backup (JSON)</button><input id="importFile" type="file" accept="application/json" class="hidden"><button class="btn ghost danger" id="clearBtn">Clear all local data</button></div>
+</section>
+<div class="footer"><span>⚑</span> Small changes. Big results. · Shotcock early build</div>
+</main>
+<script>
+const KEY='shotcock-v1';
+const defaults={rounds:[],practice:[],bag:[{club:'Driver',model:'Set up your driver',distance:'',notes:''},{club:'5 Wood',model:'Add your model',distance:'',notes:''},{club:'Hybrid',model:'Add your hybrid',distance:'',notes:''},{club:'Irons',model:'Add your iron set',distance:'',notes:''},{club:'Wedges',model:'Add your wedges',distance:'',notes:''},{club:'Putter',model:'Add your putter',distance:'',notes:''}],goals:{hcp:'',goal:20,text:''}};
+let data;try{data=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'));data.goals=Object.assign({},defaults.goals,data.goals)}catch(e){data=JSON.parse(JSON.stringify(defaults))}
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
+function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
+function go(page){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!==page));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>go(b.dataset.goto));
+function dateNow(){return new Date().toISOString().slice(0,10)};document.querySelectorAll('input[type=date]').forEach(x=>x.value=dateNow());
+function render(){
+$('#roundCount').textContent=data.rounds.length;$('#practiceCount').textContent=data.practice.length;
+let scores=data.rounds.map(r=>Number(r.score)).filter(Number.isFinite);$('#avgScore').textContent=scores.length?(scores.reduce((a,b)=>a+b,0)/scores.length).toFixed(1):'—';
+$('#hcpDisplay').textContent=data.goals.hcp!==''?data.goals.hcp:'—';$('#goalDisplay').textContent=data.goals.goal??20;
+const rounds=[...data.rounds].reverse();const html=arr=>arr.length?arr.map(r=>`<div class="round"><div><b>${esc(r.course||r.area)}</b><small>${esc(r.date)}${r.focus?' · '+esc(r.focus):''}</small></div><div style="text-align:right"><strong>${esc(r.score??(r.minutes+'m'))}</strong><small>${r.putts!==''&&r.putts!=null?esc(r.putts)+' putts':esc(r.minutes??'')+(r.minutes?' min':'')}</small><button class="smallbtn" data-delete="${r.id}" data-kind="${r.course?'round':'practice'}">Delete</button></div></div>`).join(''):'<div class="empty">Nothing logged yet.</div>';
+$('#recentRounds').innerHTML=html(rounds.slice(0,4));$('#allRounds').innerHTML=html(rounds);$('#allPractice').innerHTML=html([...data.practice].reverse());
+$('#trend').innerHTML=scores.length?data.rounds.slice(-8).map((r,i)=>`<div class="barrow"><span>${esc(r.course)}</span><div class="bar"><span style="width:${Math.max(8,Math.min(100,Number(r.score)/130*100))}%"></span></div><b>${esc(r.score)}</b></div>`).join(''):'Your scoring trend will appear here after you log rounds.';
+$('#bagList').innerHTML=data.bag.map((c,i)=>`<div class="round"><div><b>${esc(c.club)}</b><small>${esc(c.model)}${c.distance?' · '+esc(c.distance)+' yd':''}</small><small>${esc(c.notes)}</small></div><button class="smallbtn" data-clubdel="${i}">Remove</button></div>`).join('');
+$('#statsSummary').innerHTML=`<div class="notice">Rounds logged: <b>${data.rounds.length}</b> · Practice sessions: <b>${data.practice.length}</b> · ${scores.length?'Average score: <b>'+ (scores.reduce((a,b)=>a+b,0)/scores.length).toFixed(1)+'</b>':'Log your first round to calculate an average.'}</div>`+
+(data.goals.text?`<p><b>Main goal:</b> ${esc(data.goals.text)}</p>`:'');
+document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(b.dataset.kind==='round')data.rounds=data.rounds.filter(x=>String(x.id)!==b.dataset.delete);else data.practice=data.practice.filter(x=>String(x.id)!==b.dataset.delete);save()});
+document.querySelectorAll('[data-clubdel]').forEach(b=>b.onclick=()=>{data.bag.splice(Number(b.dataset.clubdel),1);save()});
+}
+$('#roundForm').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),r=Object.fromEntries(f.entries());r.id=Date.now();data.rounds.push(r);e.target.reset();e.target.date.value=dateNow();save();go('rounds');};
+$('#practiceForm').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),r=Object.fromEntries(f.entries());r.id=Date.now();data.practice.push(r);e.target.reset();e.target.date.value=dateNow();e.target.minutes.value=30;save();go('practice')};
+$('#bagForm').onsubmit=e=>{e.preventDefault();data.bag.push(Object.fromEntries(new FormData(e.target).entries()));e.target.reset();save()};
+$('#goalForm').onsubmit=e=>{e.preventDefault();data.goals=Object.fromEntries(new FormData(e.target).entries());save();alert('Goals saved.')};
+$('#exportBtn').onclick=$('#exportBtn2').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='shotcock-backup.json';a.click();URL.revokeObjectURL(a.href)};
+$('#importBtn').onclick=()=>$('#importFile').click();$('#importFile').onchange=async e=>{try{const x=JSON.parse(await e.target.files[0].text());if(!x.rounds||!x.bag)throw Error();data=x;save();alert('Backup imported.')}catch(err){alert('That file does not look like a Shotcock backup.')} };
+$('#clearBtn').onclick=()=>{if(confirm('Delete all Shotcock data saved in this browser? Export a backup first if needed.')){data=JSON.parse(JSON.stringify(defaults));save()}};
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+render();
+</script>
+</body></html>
