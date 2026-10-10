@@ -1,149 +1,908 @@
-<!doctype html>
+<meta name='viewport' content='width=device-width, initial-scale=1'/>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#06111c">
-<meta name="description" content="Shotcock golf improvement tracker — better practice, lower scores.">
-<link rel="manifest" href="manifest.json">
-<title>Shotcock — Better Practice. Lower Scores.</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101a22">
+<title>Shotcock -- Golf Improvement</title>
 <style>
-:root{--bg:#06111c;--panel:#0b1926;--panel2:#0d2030;--line:#19364a;--text:#f4f8ff;--muted:#a6b7c9;--green:#26e6a0;--blue:#2b91ff;--purple:#a45cff;--yellow:#ffbd2e}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#10283a 0,#06111c 55%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}button,input,select{font:inherit}button{cursor:pointer}
-header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:14px 18px;background:#07131ff2;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
-.brand{display:flex;align-items:center;gap:10px;font-size:23px;font-weight:800;letter-spacing:-.7px}.logo{display:grid;place-items:center;width:38px;height:38px;border:3px solid var(--green);border-radius:50%;color:var(--green);font-size:22px}.tag{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}
-main{max-width:1100px;margin:auto;padding:16px 14px 90px}.hero{border:1px solid #244b5b;border-radius:18px;padding:24px 20px;background:linear-gradient(100deg,#07131ee8,#07131e55),url('https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&w=1400&q=80') center/cover;min-height:155px;display:flex;align-items:center;justify-content:space-between;gap:15px}.hero h1{margin:0 0 6px;font-size:clamp(25px,5vw,36px);line-height:1.1}.hero p{margin:0;color:#e1ebf4;max-width:430px}.hcp{background:#07131ee8;border:1px solid var(--line);border-radius:14px;padding:14px;min-width:125px}.hcp small{color:var(--muted)}.hcp strong{display:block;font-size:30px}
-nav{display:flex;gap:7px;overflow-x:auto;padding:13px 0 16px;scrollbar-width:none}nav button,.secondary{background:#0b1b29;color:var(--muted);border:1px solid var(--line);border-radius:11px;padding:10px 13px;white-space:nowrap}nav button.active{background:#064b3a;color:var(--green);border-color:#0c9e70}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:linear-gradient(145deg,#0c1b29,#081521);border:1px solid var(--line);border-radius:15px;padding:15px;min-width:0}.metric .icon{display:grid;place-items:center;width:35px;height:35px;border-radius:50%;background:#064b3a;color:var(--green);font-size:19px}.metric h3{font-size:13px;color:var(--muted);font-weight:600;margin:10px 0 3px}.metric strong{font-size:27px}.metric small{display:block;color:var(--green)}.section{margin-top:13px}.section h2{font-size:17px;margin:0 0 12px}.two{display:grid;grid-template-columns:1.15fr .85fr;gap:12px}.barrow{display:grid;grid-template-columns:74px 1fr 32px;gap:8px;align-items:center;margin:12px 0;font-size:13px;color:var(--muted)}.bar{height:8px;border-radius:99px;background:#142a3b;overflow:hidden}.bar span{display:block;height:100%;background:var(--green);border-radius:99px}.empty{color:var(--muted);font-size:14px}.round{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.round:last-child{border:0}.round strong{font-size:20px}.round small{display:block;color:var(--muted)}.pill{color:var(--green);font-size:12px}.focus{display:flex;gap:10px;margin:12px 0}.num{display:grid;place-items:center;flex:0 0 27px;height:27px;border-radius:50%;background:var(--green);color:#052218;font-weight:800}.focus p{margin:0;font-size:14px}.focus small{display:block;color:var(--muted);margin-top:3px}.btn{border:0;background:var(--green);color:#032217;font-weight:800;padding:12px 15px;border-radius:11px;width:100%;margin-top:8px}.btn.blue{background:#1679d8;color:white}.btn.ghost{background:#102537;color:var(--text);border:1px solid var(--line)}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px}.actions .btn{margin:0}.field{display:grid;gap:6px;margin:11px 0;color:var(--muted);font-size:13px}.field input,.field select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:#06111c;color:var(--text)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hidden{display:none!important}.notice{border:1px solid #1b644e;background:#08271f;color:#b6f8de;padding:11px;border-radius:10px;font-size:13px;margin:10px 0}.footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 0}.footer span{color:var(--green)}.smallbtn{background:transparent;border:1px solid var(--line);color:var(--muted);padding:7px 9px;border-radius:8px}.danger{color:#ff9292}.planblock{padding:12px;margin:10px 0;border:1px solid var(--line);border-radius:12px;background:#081521}.planblock h3{margin:0 0 5px;font-size:15px}.planblock p{margin:4px 0;color:var(--muted);font-size:13px}.planmeta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.chip{border:1px solid #245640;background:#092a20;color:#b6f8de;border-radius:99px;padding:4px 8px;font-size:12px}.drillgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.drillcard{border:1px solid var(--line);border-radius:12px;padding:12px;background:#081521}.drillcard h3{font-size:14px;margin:0 0 5px}.drillcard p{font-size:13px;color:var(--muted);margin:0 0 8px}.drillcard small{color:var(--green)}@media(max-width:520px){.drillgrid{grid-template-columns:1fr}}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column;padding:20px}.hcp{display:flex;align-items:center;gap:10px;padding:8px 12px}.hcp strong{font-size:23px}.hcp small{max-width:100px}.formgrid{grid-template-columns:1fr 1fr}}
-@media(max-width:380px){.grid{gap:8px}.card{padding:12px}.metric strong{font-size:24px}.brand{font-size:20px}}
+:root {
+  --bg:#101a22;
+  --panel:#192731;
+  --panel2:#21343e;
+  --green:#b8ef63;
+  --green2:#8bc83e;
+  --text:#f1f5f2;
+  --muted:#a5b4b9;
+  --line:#344650;
+  --red:#ff9387;
+  --radius:18px;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.5;
+}
+button,input,select,textarea {font:inherit}
+button {cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible {
+  outline:2px solid var(--green);
+  outline-offset:3px;
+}
+.app {max-width:1100px;margin:auto;padding:18px 16px 90px}
+header {
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;margin-bottom:22px;
+}
+.brand {display:flex;align-items:center;gap:10px}
+.logo {
+  width:42px;height:42px;border-radius:13px;background:var(--green);
+  color:#152018;display:grid;place-items:center;font-weight:950;font-size:22px;
+}
+.brand-name {font-size:23px;font-weight:900;letter-spacing:-1px}
+.brand-sub {font-size:11px;color:var(--muted);letter-spacing:1.6px;text-transform:uppercase}
+.btn {
+  border:1px solid var(--line);border-radius:12px;padding:10px 14px;
+  color:var(--text);background:var(--panel);font-weight:700;
+}
+.btn.primary {background:var(--green);border-color:var(--green);color:#142019}
+.btn.small {padding:7px 10px;font-size:13px}
+.btn.danger {color:var(--red)}
+nav {
+  display:flex;gap:7px;overflow-x:auto;padding:5px 0 15px;
+  scrollbar-width:thin;margin-bottom:14px;
+}
+.nav-btn {
+  flex:0 0 auto;border:1px solid var(--line);background:var(--panel);
+  color:var(--muted);border-radius:12px;padding:10px 14px;font-weight:750;
+}
+.nav-btn.active {background:var(--green);color:#142019;border-color:var(--green)}
+.page {display:none}
+.page.active {display:block}
+h1,h2,h3,p {margin-top:0}
+h1 {font-size:clamp(27px,5vw,38px);line-height:1.1;letter-spacing:-1.2px;margin-bottom:9px}
+h2 {font-size:21px;letter-spacing:-.4px;margin-bottom:14px}
+h3 {font-size:16px;margin-bottom:8px}
+.subtitle {color:var(--muted);margin-bottom:22px}
+.hero {
+  background:linear-gradient(125deg,#2c4938,#1a302c 58%,#21343e);
+  border:1px solid #47654c;border-radius:24px;padding:24px;
+  margin-bottom:18px;position:relative;overflow:hidden;
+}
+.hero:after {
+  content:"";position:absolute;width:190px;height:190px;border:28px solid #b8ef6314;
+  border-radius:50%;right:-60px;top:-65px;pointer-events:none;
+}
+.eyebrow {font-size:11px;text-transform:uppercase;letter-spacing:1.8px;color:var(--green);font-weight:850}
+.hero p {color:#d0dfd5;max-width:530px;margin-bottom:18px}
+.hero-actions {display:flex;gap:9px;flex-wrap:wrap}
+.grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.two-col {display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+.card {
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:var(--radius);padding:18px;margin-bottom:14px;min-width:0;
+}
+.stat-label {font-size:12px;color:var(--muted);font-weight:650}
+.stat-value {font-size:29px;font-weight:900;letter-spacing:-1px;margin:5px 0}
+.stat-foot {font-size:12px;color:var(--muted)}
+.green {color:var(--green)}
+.muted {color:var(--muted)}
+.section-head {display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.section-head h2 {margin:0}
+.row {display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stack {display:grid;gap:10px}
+.item {
+  padding:12px 0;border-bottom:1px solid var(--line);
+}
+.item:last-child {border-bottom:0;padding-bottom:0}
+.item:first-child {padding-top:0}
+.item-title {font-weight:800}
+.item-sub {font-size:12px;color:var(--muted);margin-top:3px}
+.pill {
+  display:inline-flex;align-items:center;gap:5px;border-radius:999px;
+  background:#b8ef6319;color:var(--green);font-size:11px;font-weight:800;
+  padding:5px 9px;
+}
+.empty {padding:18px 0;color:var(--muted);font-size:14px}
+.progress {height:8px;border-radius:99px;background:#344650;overflow:hidden;margin:10px 0}
+.progress span {height:100%;display:block;background:var(--green);border-radius:99px}
+form {display:grid;gap:13px}
+.form-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.field {display:grid;gap:6px;min-width:0}
+.field.full {grid-column:1/-1}
+label {font-size:12px;font-weight:750;color:#d1dce0}
+input,select,textarea {
+  width:100%;min-width:0;border:1px solid var(--line);border-radius:11px;
+  background:#111e26;color:var(--text);padding:11px 12px;
+}
+textarea {resize:vertical;min-height:82px}
+input::placeholder,textarea::placeholder {color:#778b94}
+.actions {display:flex;gap:8px;flex-wrap:wrap}
+.list-row {display:flex;align-items:center;justify-content:space-between;gap:12px}
+.club-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.club {
+  background:#111e26;border:1px solid var(--line);border-radius:13px;padding:13px;
+}
+.club strong {display:block}
+.club small {color:var(--muted)}
+.drill {
+  padding:13px;border:1px solid var(--line);background:#111e26;border-radius:13px;
+}
+.drill p {color:var(--muted);font-size:13px;margin:6px 0 0}
+.trend {display:flex;align-items:end;gap:8px;height:115px;padding:10px 2px 0}
+.trend-col {flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:5px;min-width:0}
+.trend-bar {width:min(30px,75%);min-height:4px;background:var(--green);border-radius:6px 6px 2px 2px}
+.trend-num {font-size:10px;color:var(--muted)}
+.trend-label {font-size:10px;color:var(--muted);white-space:nowrap}
+.notice {color:var(--muted);font-size:12px;margin-top:10px}
+hr {border:0;border-top:1px solid var(--line);margin:16px 0}
+footer {text-align:center;color:var(--muted);font-size:11px;padding-top:24px}
+@media(max-width:720px) {
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two-col {grid-template-columns:1fr}
+  .app {padding:14px 12px 80px}
+  .hero {padding:20px}
+}
+@media(max-width:420px) {
+  .brand-name {font-size:20px}
+  .brand-sub {font-size:9px}
+  .form-grid {grid-template-columns:1fr}
+  .field.full {grid-column:auto}
+  .card {padding:15px}
+  .stat-value {font-size:25px}
+}
 </style>
 </head>
 <body>
-<header><div><div class="brand"><span class="logo">⚑</span><span>Shotcock<div class="tag">Better Practice. Lower Scores.</div></span></div></div><button class="smallbtn" id="exportBtn">Export data</button></header>
+<div class="app">
+<header>
+  <div class="brand">
+    <div class="logo">S</div>
+    <div>
+      <div class="brand-name">SHOTCOCK</div>
+      <div class="brand-sub">Play smarter. Score lower.</div>
+    </div>
+  </div>
+  <button class="btn small" onclick="exportData()">Export</button>
+</header>
+<nav aria-label="Main navigation">
+  <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+  <button class="nav-btn" data-page="rounds">Rounds</button>
+  <button class="nav-btn" data-page="practice">Practice</button>
+  <button class="nav-btn" data-page="bag">My Bag</button>
+  <button class="nav-btn" data-page="stats">Goals & Stats</button>
+</nav>
 <main>
-<section class="hero"><div><h1 id="greeting">Build a better game.</h1><p>Your golf improvement hub. Track rounds, spot patterns, and make every practice session count.</p></div><div class="hcp"><small>Target handicap</small><strong id="hcpDisplay">28</strong><small>Set your own goal</small></div></section>
-<nav id="nav"><button class="active" data-page="dashboard">⌂ Dashboard</button><button data-page="rounds">⚑ Rounds</button><button data-page="practice">◎ Practice</button><button data-page="bag">♧ My Bag</button><button data-page="goals">✧ Goals & Stats</button></nav>
-<section id="dashboard" class="page">
-<div class="grid">
-<div class="card metric"><div class="icon">◎</div><h3>Rounds logged</h3><strong id="roundCount">0</strong><small>Keep building your record</small></div>
-<div class="card metric"><div class="icon" style="background:#102e50;color:var(--blue)">⌁</div><h3>Average score</h3><strong id="avgScore">—</strong><small>Across saved rounds</small></div>
-<div class="card metric"><div class="icon" style="background:#30204a;color:var(--purple)">⚑</div><h3>Practice sessions</h3><strong id="practiceCount">0</strong><small>Consistency beats intensity</small></div>
-<div class="card metric"><div class="icon" style="background:#443315;color:var(--yellow)">↗</div><h3>Handicap goal</h3><strong id="goalDisplay">20</strong><small>Editable in Goals & Stats</small></div>
-</div>
-<div class="two section">
-<div class="card"><h2>Recent rounds</h2><div id="recentRounds" class="empty">No rounds yet. Log your first round to start seeing progress.</div><button class="btn" data-goto="rounds">＋ Log a round</button></div>
-<div class="card"><h2>Practice focus</h2><div class="focus"><span class="num">1</span><p><b>Track your biggest miss</b><small>After each round, note one pattern you want to improve.</small></p></div><div class="focus"><span class="num">2</span><p><b>Make practice measurable</b><small>Record what you worked on and how long you spent.</small></p></div><div class="focus"><span class="num">3</span><p><b>Review the trend</b><small>Use your round history to guide the next session.</small></p></div><button class="btn ghost" data-goto="practice">Plan practice</button></div>
-</div>
-<div class="card section"><h2>Scoring trend</h2><div id="trend" class="empty">Your scoring trend will appear here after you log rounds.</div></div>
+
+<!-- DASHBOARD -->
+<section class="page active" id="dashboard">
+  <div class="hero">
+    <div class="eyebrow">Your golf improvement hub</div>
+    <h1>Build a better<br>game.</h1>
+    <p>Track your rounds, train with purpose and turn your weaknesses into strengths.</p>
+    <div class="hero-actions">
+      <button class="btn primary" onclick="showPage('practice')">Start a practice plan →</button>
+      <button class="btn" onclick="showPage('rounds')">Log a round</button>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="stat-label">ROUNDS PLAYED</div><div class="stat-value" id="dRounds">0</div><div class="stat-foot">Rounds logged</div></div>
+    <div class="card"><div class="stat-label">AVERAGE SCORE</div><div class="stat-value" id="dAverage">--</div><div class="stat-foot">Across your rounds</div></div>
+    <div class="card"><div class="stat-label">PRACTICE SESSIONS</div><div class="stat-value" id="dPractice">0</div><div class="stat-foot">Sessions completed</div></div>
+    <div class="card"><div class="stat-label">HANDICAP GOAL</div><div class="stat-value green" id="dGoal">20</div><div class="stat-foot" id="dGoalFoot">Target handicap</div></div>
+  </div>
+  <div class="two-col">
+    <div class="card">
+      <div class="section-head"><h2>Recent rounds</h2><button class="btn small" onclick="showPage('rounds')">View all</button></div>
+      <div id="recentRounds"></div>
+    </div>
+    <div class="card">
+      <div class="section-head"><h2>Today's focus</h2><span class="pill">TRAIN SMART</span></div>
+      <div id="todayFocus"></div>
+      <hr>
+      <button class="btn primary" style="width:100%" onclick="showPage('practice')">Build my session</button>
+    </div>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>Scoring trend</h2><span class="muted" style="font-size:12px">Last 6 rounds</span></div>
+    <div id="scoreTrend"></div>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>Game priorities</h2><button class="btn small" onclick="showPage('stats')">Edit goals</button></div>
+    <div id="gamePriorities"></div>
+  </div>
 </section>
-<section id="rounds" class="page hidden">
-<div class="card"><h2>Log a round</h2><p class="empty">Enter a completed round. This first version saves data on this device.</p><form id="roundForm"><div class="formgrid"><label class="field">Course name<input required name="course" placeholder="e.g. Ballyclare"></label><label class="field">Date<input required name="date" type="date"></label><label class="field">Total score<input required name="score" type="number" min="40" max="200" placeholder="92"></label><label class="field">Putts<input name="putts" type="number" min="0" max="80" placeholder="34"></label><label class="field">Fairways hit<input name="fairways" type="number" min="0" max="14" placeholder="6"></label><label class="field">Greens in regulation<input name="gir" type="number" min="0" max="18" placeholder="4"></label></div><label class="field">Biggest thing to work on<select name="focus"><option>Driving accuracy</option><option>Approach shots</option><option>Short game</option><option>Putting</option><option>Course management</option></select></label><label class="field">Notes<input name="notes" placeholder="What went well? What needs work?"></label><button class="btn">Save round</button></form></div>
-<div class="card section"><h2>All rounds</h2><div id="allRounds" class="empty">Your saved rounds will appear here.</div></div>
+
+<!-- ROUNDS -->
+<section class="page" id="rounds">
+  <h1>Your rounds</h1>
+  <p class="subtitle">Record your performance. Look for patterns, not excuses.</p>
+  <div class="card">
+    <h2>Log a round</h2>
+    <form id="roundForm">
+      <div class="form-grid">
+        <div class="field"><label for="rCourse">Course</label><input id="rCourse" placeholder="e.g. Moyola" required></div>
+        <div class="field"><label for="rDate">Date</label><input id="rDate" type="date" required></div>
+        <div class="field"><label for="rScore">Total score</label><input id="rScore" type="number" min="1" max="300" placeholder="e.g. 98" required></div>
+        <div class="field"><label for="rPutts">Total putts</label><input id="rPutts" type="number" min="0" max="100" placeholder="Optional"></div>
+        <div class="field"><label for="rFairways">Fairways hit</label><input id="rFairways" type="number" min="0" max="18" placeholder="0–18"></div>
+        <div class="field"><label for="rGir">Greens in regulation</label><input id="rGir" type="number" min="0" max="18" placeholder="0–18"></div>
+        <div class="field full"><label for="rFocus">Main issue today</label>
+          <select id="rFocus">
+            <option value="Driving accuracy">Driving accuracy</option>
+            <option value="Fairway wood consistency">Fairway wood consistency</option>
+            <option value="Iron striking">Iron striking</option>
+            <option value="Wedges">Wedges and approach shots</option>
+            <option value="Putting">Putting</option>
+            <option value="Chipping">Chipping</option>
+            <option value="Course management">Course management</option>
+            <option value="Good all-round round">Good all-round round</option>
+          </select>
+        </div>
+        <div class="field full"><label for="rNotes">Notes</label><textarea id="rNotes" placeholder="What worked? What cost you shots?"></textarea></div>
+      </div>
+      <button class="btn primary" type="submit">Save round</button>
+    </form>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>Round history</h2><span class="pill" id="roundCount">0 rounds</span></div>
+    <div id="roundHistory"></div>
+  </div>
 </section>
-<section id="practice" class="page hidden">
-<div class="card"><h2>Your personalised practice plan</h2><p class="empty">Shotcock uses your recent round stats and recorded priorities to suggest what to work on. With no round data yet, it starts with a balanced baseline.</p>
-<div class="formgrid"><label class="field">Session length<select id="planMinutes"><option value="20">20 minutes</option><option value="30" selected>30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option></select></label><label class="field">Priority<select id="planFocus"><option value="auto">Pick from my stats</option><option>5 wood consistency</option><option>Driving accuracy</option><option>Iron striking</option><option>Wedges / distance control</option><option>Putting</option><option>Chipping</option><option>Course management</option></select></label></div>
-<button class="btn" id="buildPlanBtn" type="button">Build my practice plan</button><div id="planSummary" class="notice" aria-live="polite"></div><div id="planBlocks"></div><button class="btn ghost" id="usePlanBtn" type="button">Use this plan in my practice log</button></div>
-<div class="card section"><h2>Drill library</h2><p class="empty">Simple, repeatable drills. Track a result rather than just hitting balls.</p><div class="drillgrid" id="drillLibrary"></div></div>
-<div class="card section"><h2>Log a practice session</h2><form id="practiceForm"><div class="formgrid"><label class="field">Date<input required name="date" type="date"></label><label class="field">Duration (minutes)<input required name="minutes" type="number" min="5" max="600" value="30"></label></div><label class="field">Practice area<select name="area"><option>Driving accuracy</option><option>5 wood consistency</option><option>Iron striking</option><option>Approach shots</option><option>Wedges / distance control</option><option>Putting</option><option>Chipping</option><option>Course management</option></select></label><label class="field">Session notes<input name="notes" placeholder="Drills, feels, results…"></label><button class="btn">Save practice session</button></form></div><div class="card section"><h2>Practice history</h2><div id="allPractice" class="empty">No sessions logged yet.</div></div>
+
+<!-- PRACTICE -->
+<section class="page" id="practice">
+  <h1>Practice with purpose</h1>
+  <p class="subtitle">Build a session around your game, your available time and your priorities.</p>
+  <div class="card">
+    <div class="eyebrow">Personalised session builder</div>
+    <h2 style="margin-top:7px">What are we working on?</h2>
+    <form id="planForm">
+      <div class="form-grid">
+        <div class="field"><label for="pDuration">Available time</label>
+          <select id="pDuration">
+            <option value="20">20 minutes</option>
+            <option value="30" selected>30 minutes</option>
+            <option value="45">45 minutes</option>
+            <option value="60">60 minutes</option>
+          </select>
+        </div>
+        <div class="field"><label for="pFocus">Training focus</label>
+          <select id="pFocus">
+            <option value="Auto">Choose for me</option>
+            <option value="5 wood consistency">5 wood consistency</option>
+            <option value="Driving accuracy">Driving accuracy</option>
+            <option value="Iron striking">Iron striking</option>
+            <option value="Wedges distance control">Wedges distance control</option>
+            <option value="Putting">Putting</option>
+            <option value="Chipping">Chipping</option>
+            <option value="Course management">Course management</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn primary" type="submit">Generate my practice plan</button>
+    </form>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>Your practice plan</h2><span class="pill" id="planDuration">30 MIN</span></div>
+    <div id="practicePlan"><div class="empty">Generate a plan above to get started.</div></div>
+  </div>
+  <div class="card">
+    <div class="section-head"><h2>Practice session log</h2><span class="muted" style="font-size:12px">Record the work you complete</span></div>
+    <form id="practiceForm">
+      <div class="form-grid">
+        <div class="field"><label for="sDate">Date</label><input id="sDate" type="date" required></div>
+        <div class="field"><label for="sFocus">Main focus</label>
+          <select id="sFocus">
+            <option>5 wood consistency</option>
+            <option>Driving accuracy</option>
+            <option>Iron striking</option>
+            <option>Wedges distance control</option>
+            <option>Putting</option>
+            <option>Chipping</option>
+            <option>Course management</option>
+          </select>
+        </div>
+        <div class="field"><label for="sDuration">Minutes completed</label><input id="sDuration" type="number" min="1" max="300" value="30" required></div>
+        <div class="field"><label for="sQuality">Session quality</label>
+          <select id="sQuality"><option>Focused</option><option>Average</option><option>Needs improvement</option></select>
+        </div>
+        <div class="field full"><label for="sNotes">What did you learn?</label><textarea id="sNotes" placeholder="Your best feel, contact pattern or next adjustment"></textarea></div>
+      </div>
+      <button class="btn primary" type="submit">Log completed session</button>
+    </form>
+    <hr>
+    <h3>Previous sessions</h3>
+    <div id="practiceHistory"></div>
+  </div>
+  <div class="card">
+    <h2>Drill library</h2>
+    <div class="stack" id="drillLibrary"></div>
+  </div>
 </section>
-<section id="bag" class="page hidden">
-<div class="card"><h2>My Bag</h2><p class="empty">Edit the sample clubs to match your current setup.</p><form id="bagForm"><div class="formgrid"><label class="field">Club<input required name="club" placeholder="e.g. 5 Wood"></label><label class="field">Make / model<input name="model" placeholder="e.g. Ping G430 Max"></label><label class="field">Carry distance (yards)<input name="distance" type="number" min="0" max="400" placeholder="180"></label><label class="field">Notes<input name="notes" placeholder="Loft, shaft, confidence…"></label></div><button class="btn">Add club</button></form><div id="bagList" style="margin-top:12px"></div></div>
+
+<!-- MY BAG -->
+<section class="page" id="bag">
+  <h1>My bag</h1>
+  <p class="subtitle">Know your clubs, carry distances and reliable options.</p>
+  <div class="card">
+    <div class="section-head"><h2>Club distances</h2><span class="pill" id="bagCount">0 CLUBS</span></div>
+    <div id="bagList" class="club-grid"></div>
+  </div>
+  <div class="card">
+    <h2>Add a club</h2>
+    <form id="bagForm">
+      <div class="form-grid">
+        <div class="field"><label for="bClub">Club name</label><input id="bClub" placeholder="e.g. 5 wood" required></div>
+        <div class="field"><label for="bModel">Make / model</label><input id="bModel" placeholder="e.g. Ping G430 Max"></div>
+        <div class="field"><label for="bCarry">Carry distance (yards)</label><input id="bCarry" type="number" min="0" max="400" placeholder="Optional"></div>
+        <div class="field"><label for="bNotes">Confidence / notes</label><input id="bNotes" placeholder="e.g. reliable off tee"></div>
+      </div>
+      <button class="btn primary" type="submit">Add to bag</button>
+    </form>
+  </div>
 </section>
-<section id="goals" class="page hidden">
-<div class="card"><h2>Goals & Stats</h2><form id="goalForm"><label class="field">Current handicap index (optional)<input name="hcp" type="number" min="0" max="54" step="0.1" placeholder="28"></label><label class="field">Target handicap<input required name="goal" type="number" min="0" max="54" step="0.1" value="20"></label><label class="field">Main goal<input name="text" placeholder="e.g. Play more consistently"></label><button class="btn">Save goals</button></form><div class="section" id="statsSummary"></div></div>
-<div class="card section"><h2>Your data</h2><p class="empty">Your entries are stored locally in this browser. Export a backup regularly. This version does not yet sync between devices or create accounts.</p><button class="btn ghost" id="exportBtn2">Export backup (JSON)</button><button class="btn ghost" id="importBtn">Import backup (JSON)</button><input id="importFile" type="file" accept="application/json" class="hidden"><button class="btn ghost danger" id="clearBtn">Clear all local data</button></div>
+
+<!-- GOALS AND STATS -->
+<section class="page" id="stats">
+  <h1>Goals & statistics</h1>
+  <p class="subtitle">Measure what matters and set a clear direction for improvement.</p>
+  <div class="grid">
+    <div class="card"><div class="stat-label">ROUNDS</div><div class="stat-value" id="stRounds">0</div></div>
+    <div class="card"><div class="stat-label">AVERAGE SCORE</div><div class="stat-value" id="stAverage">--</div></div>
+    <div class="card"><div class="stat-label">AVERAGE PUTTS</div><div class="stat-value" id="stPutts">--</div></div>
+    <div class="card"><div class="stat-label">PRACTICE MINUTES</div><div class="stat-value" id="stMinutes">0</div></div>
+  </div>
+  <div class="card">
+    <h2>Your targets</h2>
+    <form id="goalsForm">
+      <div class="form-grid">
+        <div class="field"><label for="gCurrent">Current handicap</label><input id="gCurrent" type="number" min="0" max="54" step="0.1" placeholder="e.g. 28"></div>
+        <div class="field"><label for="gTarget">Target handicap</label><input id="gTarget" type="number" min="0" max="54" step="0.1" placeholder="e.g. 20"></div>
+        <div class="field full"><label for="gMain">Main improvement goal</label>
+          <select id="gMain">
+            <option value="5 wood consistency">5 wood consistency</option>
+            <option value="Driving accuracy">Driving accuracy</option>
+            <option value="Iron striking">Iron striking</option>
+            <option value="Wedges distance control">Wedges distance control</option>
+            <option value="Putting">Putting</option>
+            <option value="Chipping">Chipping</option>
+            <option value="Course management">Course management</option>
+          </select>
+        </div>
+        <div class="field full"><label for="gNotes">Your goal / next milestone</label><textarea id="gNotes" placeholder="e.g. commit to the 5 wood and eliminate penalty shots"></textarea></div>
+      </div>
+      <button class="btn primary" type="submit">Save goals</button>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Performance breakdown</h2>
+    <div id="performanceStats"></div>
+  </div>
+  <div class="card">
+    <h2>Data management</h2>
+    <p class="muted">Keep a backup of your rounds, practice sessions, clubs and goals.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="exportData()">Export backup</button>
+      <button class="btn" onclick="document.getElementById('importFile').click()">Import backup</button>
+      <input id="importFile" type="file" accept=".json,application/json" hidden>
+      <button class="btn danger" onclick="clearData()">Clear all data</button>
+    </div>
+    <p class="notice">Importing a backup replaces the data currently stored in this browser. Export first if you want to keep a copy.</p>
+  </div>
 </section>
-<div class="footer"><span>⚑</span> Small changes. Big results. · Shotcock early build</div>
+
 </main>
+<footer>SHOTCOCK · Your game, measured and improved.</footer>
+</div>
+
 <script>
-const KEY='shotcock-v1';
-const defaults={rounds:[],practice:[],bag:[{club:'Driver',model:'Set up your driver',distance:'',notes:''},{club:'5 Wood',model:'Add your model',distance:'',notes:''},{club:'Hybrid',model:'Add your hybrid',distance:'',notes:''},{club:'Irons',model:'Add your iron set',distance:'',notes:''},{club:'Wedges',model:'Add your wedges',distance:'',notes:''},{club:'Putter',model:'Add your putter',distance:'',notes:''}],goals:{hcp:'',goal:20,text:''}};
-let data;try{data=Object.assign({},defaults,JSON.parse(localStorage.getItem(KEY)||'{}'));data.goals=Object.assign({},defaults.goals,data.goals)}catch(e){data=JSON.parse(JSON.stringify(defaults))}
-const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function save(){localStorage.setItem(KEY,JSON.stringify(data));render()}
-function go(page){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!==page));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===page));window.scrollTo({top:0,behavior:'smooth'})}
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>go(b.dataset.goto));
-function dateNow(){return new Date().toISOString().slice(0,10)};document.querySelectorAll('input[type=date]').forEach(x=>x.value=dateNow());
-function render(){
-$('#roundCount').textContent=data.rounds.length;$('#practiceCount').textContent=data.practice.length;
-let scores=data.rounds.map(r=>Number(r.score)).filter(Number.isFinite);$('#avgScore').textContent=scores.length?(scores.reduce((a,b)=>a+b,0)/scores.length).toFixed(1):'—';
-$('#hcpDisplay').textContent=data.goals.hcp!==''?data.goals.hcp:'—';$('#goalDisplay').textContent=data.goals.goal??20;
-const rounds=[...data.rounds].reverse();const html=arr=>arr.length?arr.map(r=>`<div class="round"><div><b>${esc(r.course||r.area)}</b><small>${esc(r.date)}${r.focus?' · '+esc(r.focus):''}</small></div><div style="text-align:right"><strong>${esc(r.score??(r.minutes+'m'))}</strong><small>${r.putts!==''&&r.putts!=null?esc(r.putts)+' putts':esc(r.minutes??'')+(r.minutes?' min':'')}</small><button class="smallbtn" data-delete="${r.id}" data-kind="${r.course?'round':'practice'}">Delete</button></div></div>`).join(''):'<div class="empty">Nothing logged yet.</div>';
-$('#recentRounds').innerHTML=html(rounds.slice(0,4));$('#allRounds').innerHTML=html(rounds);$('#allPractice').innerHTML=html([...data.practice].reverse());
-$('#trend').innerHTML=scores.length?data.rounds.slice(-8).map((r,i)=>`<div class="barrow"><span>${esc(r.course)}</span><div class="bar"><span style="width:${Math.max(8,Math.min(100,Number(r.score)/130*100))}%"></span></div><b>${esc(r.score)}</b></div>`).join(''):'Your scoring trend will appear here after you log rounds.';
-$('#bagList').innerHTML=data.bag.map((c,i)=>`<div class="round"><div><b>${esc(c.club)}</b><small>${esc(c.model)}${c.distance?' · '+esc(c.distance)+' yd':''}</small><small>${esc(c.notes)}</small></div><button class="smallbtn" data-clubdel="${i}">Remove</button></div>`).join('');
-$('#statsSummary').innerHTML=`<div class="notice">Rounds logged: <b>${data.rounds.length}</b> · Practice sessions: <b>${data.practice.length}</b> · ${scores.length?'Average score: <b>'+ (scores.reduce((a,b)=>a+b,0)/scores.length).toFixed(1)+'</b>':'Log your first round to calculate an average.'}</div>`+
-(data.goals.text?`<p><b>Main goal:</b> ${esc(data.goals.text)}</p>`:'');
-document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(b.dataset.kind==='round')data.rounds=data.rounds.filter(x=>String(x.id)!==b.dataset.delete);else data.practice=data.practice.filter(x=>String(x.id)!==b.dataset.delete);save()});
-document.querySelectorAll('[data-clubdel]').forEach(b=>b.onclick=()=>{data.bag.splice(Number(b.dataset.clubdel),1);save()});
-if(typeof renderDrills==='function')renderDrills();
-}
-const drillSets={
-'5 wood consistency':[
-{title:'Start-line gate',time:8,how:'Place two alignment sticks or tees just wider than the clubhead path. Hit 8–10 balls at 60–70% effort, aiming to start each ball through the gate.',measure:'Count how many start on your intended line.'},
-{title:'Three-ball fairway',time:10,how:'Pick a fairway-width target. Hit sets of three balls with your normal routine; reset between shots and hold the finish.',measure:'Record how many of 9 would finish in the fairway.'},
-{title:'Random target routine',time:12,how:'Change target every ball. Step away, choose the target, rehearse once, then hit. Avoid rapid-fire swings.',measure:'Score each shot: 2 on target, 1 playable miss, 0 big miss.'}],
-'Driving accuracy':[
-{title:'Fairway window',time:8,how:'Choose a realistic landing corridor, not a flag. Hit 8 controlled shots using the same pre-shot routine.',measure:'Count playable starts and finish positions.'},
-{title:'Tempo ladder',time:10,how:'Hit 3 balls at 60%, 3 at 70%, then 3 at 80% effort. Do not increase speed if face control disappears.',measure:'Find the fastest effort that keeps the pattern playable.'},
-{title:'One-ball routine',time:12,how:'Use a full routine for every ball and change the target each time. No extra balls after a poor shot.',measure:'Record fairway-window hits out of 9.'}],
-'Iron striking':[
-{title:'Towel contact drill',time:8,how:'Place a towel a hand-span behind the ball. Make small swings that strike the ball first without hitting the towel.',measure:'Count clean contacts out of 10.'},
-{title:'Low-point line',time:10,how:'Draw a line on grass or use a range mat reference. Rehearse brushing the ground just target-side of the ball position.',measure:'Track clean strikes and start line.'},
-{title:'Target ladder',time:12,how:'Alternate between two targets and clubs. Take a full reset between shots rather than hitting blocks with one club.',measure:'Score contact and direction separately.'}],
-'Wedges / distance control':[
-{title:'Three carry windows',time:8,how:'Choose short, medium and long wedge swings. Keep tempo steady and vary backswing length, not effort.',measure:'Record which window each ball lands in.'},
-{title:'Clock-face wedges',time:12,how:'Use 9-to-3 and 10-to-2 swing lengths with one wedge. Hit five balls per length before changing.',measure:'Note average carry for each swing length.'},
-{title:'Random yardages',time:10,how:'Pick a different target distance for each ball and commit to a landing spot.',measure:'Count shots finishing within your chosen landing zone.'}],
-'Putting':[
-{title:'Gate start line',time:8,how:'Set two tees just wider than your putter head and roll 10 short putts through the gate.',measure:'Count starts through the gate.'},
-{title:'Ladder distance control',time:10,how:'Putt to 10, 20 and 30 feet (or three different lengths). Try to finish each ball within a putter length of the target.',measure:'Count distance-control successes, not makes.'},
-{title:'Circle of pressure',time:12,how:'Place 6 balls around a hole at a comfortable short-putt distance. Restart the set if you miss two in a row.',measure:'Track makes out of 6 and repeat next session.'}],
-'Chipping':[
-{title:'Landing spot ladder',time:8,how:'Pick three landing spots and use one simple chip motion. Let the ball roll out rather than trying to fly it all the way.',measure:'Count balls landing in the chosen zone.'},
-{title:'One landing spot, three clubs',time:10,how:'Use three clubs to land the ball on the same spot and compare rollout.',measure:'Record which club gives the easiest predictable result.'},
-{title:'Up-and-down game',time:12,how:'Drop 6 balls around a practice green. Chip each one and putt out if possible.',measure:'Record how many finish in two shots.'}],
-'Approach shots':[
-{title:'Start-line and contact',time:8,how:'Hit 8 half-to-three-quarter iron shots at a clear target. Prioritise centred contact and a predictable start line.',measure:'Count solid strikes and note left/right misses.'},
-{title:'Distance window',time:12,how:'Choose one target and hit in sets of three, aiming for a consistent carry window rather than maximum distance.',measure:'Track shots finishing short, on target or long.'},
-{title:'Random club practice',time:10,how:'Change target and club each ball, simulating approach shots on the course.',measure:'Record whether each shot leaves a manageable next shot.'}],
-'Course management':[
-{title:'Safe-side decisions',time:8,how:'Choose a hole or imagined hole. Identify the penalty side, safest landing zone and club that keeps trouble out of play.',measure:'Write one clear target and one no-go area for each scenario.'},
-{title:'Three-shot hole',time:12,how:'Play an imaginary par 4 using three different clubs. Pick a safe target before each shot and accept the conservative result.',measure:'Count decisions that avoid the big miss.'},
-{title:'Post-shot review',time:10,how:'After each practice shot, decide whether the result came from decision, contact or execution. Change only one thing at a time.',measure:'Record the pattern, not just the outcome.'}]
+"use strict";
+
+/* Keep this key to preserve existing Shotcock data. */
+const KEY = "shotcock-v1";
+
+const defaults = {
+  rounds: [],
+  practice: [],
+  bag: [
+    {club:"Driver",model:"TaylorMade M4",carry:"",notes:"Optional club"},
+    {club:"5 wood",model:"Ping G430 Max",carry:"",notes:"Build consistency"},
+    {club:"4 hybrid",model:"Adams Super 4H",carry:"",notes:""},
+    {club:"3 iron",model:"Ping G25",carry:"",notes:""},
+    {club:"4 iron",model:"Ping G15",carry:"",notes:""},
+    {club:"5 iron",model:"Ping G15",carry:"",notes:""},
+    {club:"6 iron",model:"Ping G15",carry:"",notes:""},
+    {club:"7 iron",model:"Ping G15",carry:"",notes:""},
+    {club:"8 iron",model:"Ping G15",carry:"",notes:""},
+    {club:"9 iron",model:"Ping G15",carry:"",notes:""},
+    {club:"Pitching wedge",model:"",carry:"",notes:""},
+    {club:"50° wedge",model:"",carry:"",notes:""},
+    {club:"56° wedge",model:"Vokey SM8",carry:"",notes:""},
+    {club:"64° wedge",model:"American Open",carry:"",notes:""},
+    {club:"Putter",model:"Spider Tour X",carry:"",notes:""}
+  ],
+  goals: {hcp:"",goal:20,text:"",main:"5 wood consistency"}
 };
-let activePlan={focus:'5 wood consistency',minutes:30,blocks:[]};
-function pickFocus(){
- const recent=[...data.rounds].slice(-5); if(!recent.length)return '5 wood consistency';
- const focusCounts={}; recent.forEach(r=>{if(r.focus)focusCounts[r.focus]=(focusCounts[r.focus]||0)+1});
- const avg=(key)=>{const vals=recent.map(r=>Number(r[key])).filter(n=>Number.isFinite(n)&&n>0);return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null};
- const putts=avg('putts'), fairways=avg('fairways'), gir=avg('gir');
- if(putts!==null&&putts>=36)return 'Putting';
- if(fairways!==null&&fairways<5)return 'Driving accuracy';
- if(gir!==null&&gir<4)return 'Approach shots';
- const mapped={'Driving accuracy':'Driving accuracy','Approach shots':'Approach shots','Short game':'Chipping','Putting':'Putting','Course management':'Course management'};
- const top=Object.entries(focusCounts).sort((a,b)=>b[1]-a[1])[0]; return top?(mapped[top[0]]||top[0]):'5 wood consistency';
+
+let data = loadData();
+let currentPlan = [];
+
+function clone(obj) {
+  return JSON.parse(JSON.stringify(obj));
 }
-function buildPlan(){
- const chosen=$('#planFocus').value;const focus=chosen==='auto'?pickFocus():chosen;const minutes=Number($('#planMinutes').value)||30;
- const source=drillSets[focus]||drillSets['5 wood consistency'];const parts=minutes<=20?[source[0],source[1]]:minutes<=30?source:minutes<=45?[source[0],source[1],source[2]]:[source[0],source[1],source[2],{title:'Pressure test',time:minutes-30,how:'Finish with a small game using the same routine and a clear target. Do not chase perfect shots; commit to the process.',measure:'Record your score and compare it with your next session.'}];
- let remain=minutes;activePlan={focus,minutes,blocks:parts.map((d,i)=>{let t=i===parts.length-1?remain:Math.min(d.time,Math.max(5,Math.floor(minutes/parts.length/5)*5));remain-=t;return {...d,time:t}})};
- $('#planSummary').textContent=`Recommended focus: ${focus}. Based on ${data.rounds.length?`your ${Math.min(5,data.rounds.length)} most recent round(s)`:'a starting baseline'}; adjust the priority any time.`;
- $('#planBlocks').innerHTML=activePlan.blocks.map((d,i)=>`<div class="planblock"><div class="planmeta"><span class="chip">Block ${i+1} · ${d.time} min</span></div><h3>${esc(d.title)}</h3><p>${esc(d.how)}</p><p><b>Measure:</b> ${esc(d.measure)}</p></div>`).join('');
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(KEY);
+    if (!raw) return clone(defaults);
+    const saved = JSON.parse(raw);
+    return {
+      ...clone(defaults),
+      ...saved,
+      rounds: Array.isArray(saved.rounds) ? saved.rounds : [],
+      practice: Array.isArray(saved.practice) ? saved.practice : [],
+      bag: Array.isArray(saved.bag) ? saved.bag : clone(defaults.bag),
+      goals: {...defaults.goals,...(saved.goals || {})}
+    };
+  } catch (err) {
+    console.error("Could not load Shotcock data:", err);
+    return clone(defaults);
+  }
 }
-function renderDrills(){const focus=pickFocus();const picks=[focus,'Putting','5 wood consistency','Wedges / distance control'];const unique=[...new Set(picks)];$('#drillLibrary').innerHTML=unique.map(name=>{const d=(drillSets[name]||drillSets['5 wood consistency'])[0];return `<div class="drillcard"><h3>${esc(name)}: ${esc(d.title)}</h3><p>${esc(d.how)}</p><small>${esc(d.measure)}</small><button class="btn ghost" type="button" data-drill="${esc(name)}">Build this plan</button></div>`}).join('');document.querySelectorAll('[data-drill]').forEach(b=>b.onclick=()=>{$('#planFocus').value=b.dataset.drill;buildPlan();window.scrollTo({top:0,behavior:'smooth'})})}
-$('#buildPlanBtn').onclick=buildPlan;
-$('#usePlanBtn').onclick=()=>{go('practice');$('#practiceForm [name="area"]').value=activePlan.focus;$('#practiceForm [name="minutes"]').value=activePlan.minutes;$('#practiceForm [name="notes"]').value=activePlan.blocks.map((d,i)=>`${i+1}. ${d.title} (${d.time} min): ${d.measure}`).join('\n');$('#practiceForm').scrollIntoView({behavior:'smooth',block:'start'})};
-$('#roundForm').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),r=Object.fromEntries(f.entries());r.id=Date.now();data.rounds.push(r);e.target.reset();e.target.date.value=dateNow();save();go('rounds');};
-$('#practiceForm').onsubmit=e=>{e.preventDefault();let f=new FormData(e.target),r=Object.fromEntries(f.entries());r.id=Date.now();data.practice.push(r);e.target.reset();e.target.date.value=dateNow();e.target.minutes.value=30;save();go('practice')};
-$('#bagForm').onsubmit=e=>{e.preventDefault();data.bag.push(Object.fromEntries(new FormData(e.target).entries()));e.target.reset();save()};
-$('#goalForm').onsubmit=e=>{e.preventDefault();data.goals=Object.fromEntries(new FormData(e.target).entries());save();alert('Goals saved.')};
-$('#exportBtn').onclick=$('#exportBtn2').onclick=()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='shotcock-backup.json';a.click();URL.revokeObjectURL(a.href)};
-$('#importBtn').onclick=()=>$('#importFile').click();$('#importFile').onchange=async e=>{try{const x=JSON.parse(await e.target.files[0].text());if(!x.rounds||!x.bag)throw Error();data=x;save();alert('Backup imported.')}catch(err){alert('That file does not look like a Shotcock backup.')}};
-$('#clearBtn').onclick=()=>{if(confirm('Delete all Shotcock data saved in this browser? Export a backup first if needed.')){data=JSON.parse(JSON.stringify(defaults));save()}};
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-buildPlan();render();
+
+function saveData() {
+  try {
+    localStorage.setItem(KEY, JSON.stringify(data));
+    renderAll();
+  } catch (err) {
+    alert("Shotcock could not save your data. Export a backup and check your browser storage.");
+    console.error(err);
+  }
+}
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function num(value) {
+  if (value === "" || value === null || value === undefined) return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function average(values) {
+  const valid = values.map(Number).filter(Number.isFinite);
+  return valid.length ? valid.reduce((a,b)=>a+b,0)/valid.length : null;
+}
+
+function fmt(value, digits=1) {
+  return value === null || !Number.isFinite(value) ? "—" : value.toFixed(digits);
+}
+
+function today() {
+  const d = new Date();
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0,10);
+}
+
+function prettyDate(value) {
+  if (!value) return "Date not recorded";
+  const d = new Date(value + "T12:00:00");
+  return Number.isNaN(d.getTime()) ? esc(value) :
+    d.toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"});
+}
+
+function uid() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2,8);
+}
+
+function showPage(page) {
+  document.querySelectorAll(".page").forEach(el => {
+    el.classList.toggle("active", el.id === page);
+  });
+  document.querySelectorAll(".nav-btn").forEach(el => {
+    el.classList.toggle("active", el.dataset.page === page);
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+  renderAll();
+}
+
+document.querySelectorAll(".nav-btn").forEach(btn => {
+  btn.addEventListener("click", () => showPage(btn.dataset.page));
+});
+
+function renderAll() {
+  renderDashboard();
+  renderRounds();
+  renderPracticeHistory();
+  renderBag();
+  renderStats();
+  renderGoalsForm();
+}
+
+function renderDashboard() {
+  const scores = data.rounds.map(r => num(r.score)).filter(v=>v!==null);
+  const avg = average(scores);
+  document.getElementById("dRounds").textContent = data.rounds.length;
+  document.getElementById("dAverage").textContent = fmt(avg,1);
+  document.getElementById("dPractice").textContent = data.practice.length;
+  document.getElementById("dGoal").textContent =
+    data.goals.goal === "" ? "20" : data.goals.goal;
+  document.getElementById("dGoalFoot").textContent =
+    data.goals.hcp === "" ? "Target handicap" : "Current: " + data.goals.hcp;
+
+  const recent = [...data.rounds].sort((a,b)=>
+    String(b.date||"").localeCompare(String(a.date||""))).slice(0,4);
+  document.getElementById("recentRounds").innerHTML = recent.length
+    ? recent.map(r => `<div class="item">
+        <div class="row"><div><div class="item-title">${esc(r.course||"Round")}</div>
+        <div class="item-sub">${prettyDate(r.date)}</div></div>
+        <div style="text-align:right"><div class="item-title">${esc(r.score ?? "—")}</div>
+        <div class="item-sub">score</div></div></div></div>`).join("")
+    : `<div class="empty">No rounds logged yet. Record your next round to start building your stats.</div>`;
+
+  const focus = data.goals.main || data.goals.text || "5 wood consistency";
+  document.getElementById("todayFocus").innerHTML = `
+    <div class="eyebrow">Recommended priority</div>
+    <h3 style="font-size:20px;margin-top:8px">${esc(focus)}</h3>
+    <p class="muted" style="font-size:13px">Practise one skill with a clear purpose. Track the result instead of just counting balls.</p>
+    <div class="pill">One focus. One session.</div>`;
+
+  const last = [...data.rounds].sort((a,b)=>
+    String(a.date||"").localeCompare(String(b.date||""))).slice(-6);
+  if (!last.length) {
+    document.getElementById("scoreTrend").innerHTML =
+      `<div class="empty">Your scoring trend will appear after you log rounds.</div>`;
+  } else {
+    const vals = last.map(r=>num(r.score));
+    const max = Math.max(...vals.filter(v=>v!==null),1);
+    const min = Math.min(...vals.filter(v=>v!==null),0);
+    const range = Math.max(max-min,1);
+    document.getElementById("scoreTrend").innerHTML =
+      `<div class="trend">${last.map((r,i)=>{
+        const v=vals[i];
+        const height=v===null?4:25+((v-min)/range)*65;
+        return `<div class="trend-col"><div class="trend-num">${v===null?"—":v}</div>
+          <div class="trend-bar" style="height:${height}px"></div>
+          <div class="trend-label">${esc((r.course||"Round").slice(0,7))}</div></div>`;
+      }).join("")}</div><p class="notice">Scores are shown in date order. Lower scores are better.</p>`;
+  }
+
+  const focusCounts = {};
+  data.rounds.forEach(r=>{
+    if (r.focus) focusCounts[r.focus]=(focusCounts[r.focus]||0)+1;
+  });
+  const ranked = Object.entries(focusCounts).sort((a,b)=>b[1]-a[1]).slice(0,3);
+  document.getElementById("gamePriorities").innerHTML = ranked.length
+    ? ranked.map(([name,count])=>`<div class="item">
+        <div class="row"><span>${esc(name)}</span><span class="muted">${count} round${count===1?"":"s"}</span></div>
+      </div>`).join("")
+    : `<div class="empty">Log your rounds and identify the areas costing you shots.</div>`;
+}
+
+function renderRounds() {
+  document.getElementById("roundCount").textContent =
+    `${data.rounds.length} round${data.rounds.length===1?"":"s"}`;
+  const list = [...data.rounds].sort((a,b)=>
+    String(b.date||"").localeCompare(String(a.date||"")));
+  document.getElementById("roundHistory").innerHTML = list.length
+    ? list.map(r=>`<div class="item">
+        <div class="row"><div><div class="item-title">${esc(r.course||"Round")}</div>
+        <div class="item-sub">${prettyDate(r.date)} · ${esc(r.focus||"No focus recorded")}</div></div>
+        <div style="text-align:right"><div class="item-title">${esc(r.score ?? "—")}</div>
+        <button class="btn small danger" onclick="deleteRound('${esc(r.id)}')">Delete</button></div></div>
+        ${r.notes?`<div class="item-sub" style="margin-top:8px">${esc(r.notes)}</div>`:""}
+        </div>`).join("")
+    : `<div class="empty">No rounds recorded yet.</div>`;
+}
+
+document.getElementById("roundForm").addEventListener("submit", e=>{
+  e.preventDefault();
+  const score=num(document.getElementById("rScore").value);
+  if (score===null || score<1) return alert("Enter a valid round score.");
+  data.rounds.push({
+    id:uid(),
+    course:document.getElementById("rCourse").value.trim(),
+    date:document.getElementById("rDate").value || today(),
+    score,
+    putts:num(document.getElementById("rPutts").value),
+    fairways:num(document.getElementById("rFairways").value),
+    gir:num(document.getElementById("rGir").value),
+    focus:document.getElementById("rFocus").value,
+    notes:document.getElementById("rNotes").value.trim()
+  });
+  saveData();
+  e.target.reset();
+  document.getElementById("rDate").value=today();
+  alert("Round saved.");
+});
+
+function deleteRound(id) {
+  if (!confirm("Delete this round?")) return;
+  data.rounds=data.rounds.filter(r=>String(r.id)!==String(id));
+  saveData();
+}
+
+const drillData = {
+  "5 wood consistency":[
+    ["Start-line gate","Place two tees just wider than the clubhead's intended start line. Make controlled swings and aim to start the ball through the gate.","8–12 balls"],
+    ["Fairway finder","Choose a generous target corridor. Use a repeatable pre-shot routine and a balanced finish; record how many shots stay in the corridor.","10 balls"],
+    ["Three-ball reset","Hit three balls with a full routine between shots. Judge start direction and strike, not maximum distance.","3 sets"]
+  ],
+  "Driving accuracy":[
+    ["Fairway corridor","Pick a realistic landing corridor and aim for its centre. Count successful starts.","10 balls"],
+    ["One-ball challenge","Use the same routine for each shot as if on the course. No rapid-fire hitting.","8 balls"],
+    ["Safe-side targets","Choose targets that leave room for your normal shot shape.","6 balls"]
+  ],
+  "Iron striking":[
+    ["Contact line","Use a line on the mat or a mark on the ground to check low point and strike location.","10 balls"],
+    ["Three-quarter swings","Prioritise centre contact and a balanced finish before adding speed.","10 balls"],
+    ["Random targets","Alternate targets and clubs to practise adapting rather than grooving one shot.","8 balls"]
+  ],
+  "Wedges distance control":[
+    ["Three swing lengths","Use short, medium and longer controlled swings with one wedge. Record carry estimates.","12 balls"],
+    ["Landing zone","Pick a landing area and judge whether the ball finishes inside your target zone.","10 balls"],
+    ["Random yardages","Change target distance after each shot and rehearse your routine.","8 balls"]
+  ],
+  "Putting":[
+    ["Start-line gate","Roll putts through a tee gate just beyond the ball, keeping the face square through impact.","10 putts"],
+    ["Lag-putt ladder","Putt to a distant target and aim to finish inside a three-foot circle.","10 putts"],
+    ["Pressure finish","Hole five short putts in a row before finishing the session.","5+ putts"]
+  ],
+  "Chipping":[
+    ["Landing spot","Choose a landing spot and land the ball there repeatedly with a simple motion.","10 chips"],
+    ["One club, three lies","Practise from different lies with the same club and adjust landing spot.","9 chips"],
+    ["Up-and-down game","Play a chip followed by a putt and record how often you finish in two shots.","6 attempts"]
+  ],
+  "Course management":[
+    ["Target selection","For three imagined holes, choose a safe target and identify the penalty side to avoid.","5 minutes"],
+    ["Recovery decisions","Practise selecting a safe lay-up rather than forcing a low-percentage shot.","5 minutes"],
+    ["Pre-shot routine","Rehearse target, club, one clear cue and commitment before each practice shot.","10 minutes"]
+  ]
+};
+
+function buildPlan(focus,duration) {
+  if (focus==="Auto") {
+    const goal=data.goals.main || "5 wood consistency";
+    const recent=data.rounds.slice(-3);
+    const counts={};
+    recent.forEach(r=>{if(r.focus)counts[r.focus]=(counts[r.focus]||0)+1;});
+    focus=Object.keys(counts).sort((a,b)=>counts[b]-counts[a])[0] || goal;
+    if (!drillData[focus]) focus=goal;
+    if (!drillData[focus]) focus="5 wood consistency";
+  }
+  const drills=drillData[focus] || drillData["5 wood consistency"];
+  const fractions=[0.4,0.35,0.25];
+  let remaining=duration;
+  return {
+    focus,
+    duration,
+    drills:drills.map((d,i)=>{
+      const mins=i===drills.length-1?remaining:Math.max(3,Math.round(duration*fractions[i]));
+      remaining-=mins;
+      return {name:d[0],description:d[1],target:d[2],minutes:mins};
+    })
+  };
+}
+
+document.getElementById("planForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  currentPlan=buildPlan(
+    document.getElementById("pFocus").value,
+    Number(document.getElementById("pDuration").value)
+  );
+  renderPlan();
+});
+
+function renderPlan() {
+  if (!currentPlan || !currentPlan.drills) return;
+  document.getElementById("planDuration").textContent=currentPlan.duration+" MIN";
+  document.getElementById("practicePlan").innerHTML=`
+    <div class="eyebrow">${esc(currentPlan.focus)}</div>
+    <p class="muted" style="font-size:13px;margin-top:6px">Follow the drills in order. Prioritise quality, routine and feedback.</p>
+    <div class="stack">${currentPlan.drills.map((d,i)=>`
+      <div class="drill">
+        <div class="row"><h3>${i+1}. ${esc(d.name)}</h3><span class="pill">${d.minutes} min</span></div>
+        <p>${esc(d.description)}</p>
+        <p><strong>Target:</strong> ${esc(d.target)}</p>
+      </div>`).join("")}</div>
+    <button class="btn primary" style="width:100%;margin-top:14px" onclick="usePlan()">Log this session</button>`;
+}
+
+function usePlan() {
+  document.getElementById("sDate").value=today();
+  document.getElementById("sFocus").value=currentPlan.focus;
+  document.getElementById("sDuration").value=currentPlan.duration;
+  document.getElementById("sNotes").value="Plan: "+currentPlan.drills.map(d=>d.name).join(", ");
+  document.getElementById("practiceForm").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+document.getElementById("practiceForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const minutes=num(document.getElementById("sDuration").value);
+  if (!minutes || minutes<1) return alert("Enter the minutes you completed.");
+  data.practice.push({
+    id:uid(),
+    date:document.getElementById("sDate").value || today(),
+    focus:document.getElementById("sFocus").value,
+    duration:minutes,
+    quality:document.getElementById("sQuality").value,
+    notes:document.getElementById("sNotes").value.trim()
+  });
+  saveData();
+  e.target.reset();
+  document.getElementById("sDate").value=today();
+  document.getElementById("sDuration").value=30;
+  alert("Practice session saved.");
+});
+
+function renderPracticeHistory() {
+  const list=[...data.practice].sort((a,b)=>
+    String(b.date||"").localeCompare(String(a.date||""))).slice(0,12);
+  document.getElementById("practiceHistory").innerHTML=list.length
+    ? list.map(s=>`<div class="item">
+        <div class="row"><div><div class="item-title">${esc(s.focus||"Practice")}</div>
+        <div class="item-sub">${prettyDate(s.date)} · ${esc(s.quality||"")}</div></div>
+        <div style="text-align:right"><strong>${esc(s.duration ?? s.minutes ?? "—")} min</strong><br>
+        <button class="btn small danger" onclick="deletePractice('${esc(s.id)}')">Delete</button></div></div>
+        ${s.notes?`<div class="item-sub" style="margin-top:8px">${esc(s.notes)}</div>`:""}
+        </div>`).join("")
+    : `<div class="empty">Your completed sessions will appear here.</div>`;
+
+  document.getElementById("drillLibrary").innerHTML=Object.entries(drillData).map(([focus,drills])=>`
+    <details class="drill"><summary><strong>${esc(focus)}</strong></summary>
+      <div class="stack" style="margin-top:12px">${drills.map(d=>`
+        <div><strong>${esc(d[0])}</strong><p>${esc(d[1])} · ${esc(d[2])}</p></div>`).join("")}</div>
+      <button class="btn small" style="margin-top:10px" onclick="chooseFocus('${esc(focus)}')">Build this session</button>
+    </details>`).join("");
+}
+
+function chooseFocus(focus) {
+  document.getElementById("pFocus").value=focus;
+  showPage("practice");
+  document.getElementById("planForm").requestSubmit();
+}
+
+function deletePractice(id) {
+  if (!confirm("Delete this practice session?")) return;
+  data.practice=data.practice.filter(s=>String(s.id)!==String(id));
+  saveData();
+}
+
+document.getElementById("bagForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  data.bag.push({
+    id:uid(),
+    club:document.getElementById("bClub").value.trim(),
+    model:document.getElementById("bModel").value.trim(),
+    carry:document.getElementById("bCarry").value,
+    notes:document.getElementById("bNotes").value.trim()
+  });
+  saveData();
+  e.target.reset();
+});
+
+function renderBag() {
+  document.getElementById("bagCount").textContent=data.bag.length+" CLUBS";
+  document.getElementById("bagList").innerHTML=data.bag.length
+    ? data.bag.map((c,i)=>`<div class="club">
+        <div class="row"><strong>${esc(c.club||"Club")}</strong>
+        <button class="btn small danger" onclick="deleteClub('${esc(c.id ?? i)}')">×</button></div>
+        <small>${esc(c.model||"Model not entered")}</small>
+        <div style="font-size:22px;font-weight:900;margin-top:8px">${c.carry!=="" && c.carry!=null ? esc(c.carry)+" yd":"—"}</div>
+        <small>${esc(c.notes||"Carry distance not recorded")}</small>
+      </div>`).join("")
+    : `<div class="empty">Add your clubs to start building your bag.</div>`;
+}
+
+function deleteClub(id) {
+  if (!confirm("Remove this club from your bag?")) return;
+  data.bag=data.bag.filter((c,i)=>String(c.id ?? i)!==String(id));
+  saveData();
+}
+
+document.getElementById("goalsForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  data.goals={
+    ...data.goals,
+    hcp:document.getElementById("gCurrent").value,
+    goal:document.getElementById("gTarget").value,
+    main:document.getElementById("gMain").value,
+    text:document.getElementById("gNotes").value.trim()
+  };
+  saveData();
+  alert("Goals saved.");
+});
+
+function renderGoalsForm() {
+  document.getElementById("gCurrent").value=data.goals.hcp ?? "";
+  document.getElementById("gTarget").value=data.goals.goal ?? "";
+  document.getElementById("gMain").value=data.goals.main || "5 wood consistency";
+  document.getElementById("gNotes").value=data.goals.text || "";
+}
+
+function renderStats() {
+  const scores=data.rounds.map(r=>num(r.score)).filter(v=>v!==null);
+  const putts=data.rounds.map(r=>num(r.putts)).filter(v=>v!==null);
+  const fairways=data.rounds.map(r=>num(r.fairways)).filter(v=>v!==null);
+  const gir=data.rounds.map(r=>num(r.gir)).filter(v=>v!==null);
+  const minutes=data.practice.reduce((sum,s)=>sum+(num(s.duration ?? s.minutes)||0),0);
+
+  document.getElementById("stRounds").textContent=data.rounds.length;
+  document.getElementById("stAverage").textContent=fmt(average(scores),1);
+  document.getElementById("stPutts").textContent=fmt(average(putts),1);
+  document.getElementById("stMinutes").textContent=minutes;
+
+  const stats=[
+    ["Average score",fmt(average(scores),1)],
+    ["Average putts",fmt(average(putts),1)],
+    ["Average fairways hit",fmt(average(fairways),1)],
+    ["Average greens in regulation",fmt(average(gir),1)],
+    ["Practice sessions",String(data.practice.length)],
+    ["Practice minutes",String(minutes)]
+  ];
+  document.getElementById("performanceStats").innerHTML=stats.map(([label,value])=>`
+    <div class="item"><div class="row"><span>${esc(label)}</span><strong>${esc(value)}</strong></div></div>
+  `).join("");
+}
+
+function exportData() {
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="shotcock-backup-"+today()+".json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById("importFile").addEventListener("change",async e=>{
+  const file=e.target.files && e.target.files[0];
+  if (!file) return;
+  try {
+    const imported=JSON.parse(await file.text());
+    if (!imported || !Array.isArray(imported.rounds) ||
+        !Array.isArray(imported.practice) || !Array.isArray(imported.bag)) {
+      throw new Error("This file does not look like a Shotcock backup.");
+    }
+    if (!confirm("Replace the data in this browser with the backup in this file? Export your current data first if you want to keep it.")) {
+      e.target.value="";
+      return;
+    }
+    data={
+      ...clone(defaults),
+      ...imported,
+      goals:{...defaults.goals,...(imported.goals||{})}
+    };
+    saveData();
+    alert("Backup imported.");
+  } catch(err) {
+    alert("Import failed: "+err.message);
+  }
+  e.target.value="";
+});
+
+function clearData() {
+  if (!confirm("Delete all Shotcock rounds, practice sessions, clubs and goals from this browser? Export a backup first if needed.")) return;
+  if (!confirm("Final confirmation: permanently clear the stored Shotcock data?")) return;
+  data=clone(defaults);
+  saveData();
+}
+
+/* Initialise dates and restore saved information. */
+document.getElementById("rDate").value=today();
+document.getElementById("sDate").value=today();
+renderAll();
 </script>
-</body></html>
+
+</body>
+</html>
