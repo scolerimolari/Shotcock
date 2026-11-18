@@ -1,4 +1,4 @@
-const CACHE = 'shotcock-cache-v3';
+const CACHE = 'shotcock-cache-v4';
 const APP_FILES = ['./', './index.html', './manifest.json'];
 
 self.addEventListener('install', event => {
