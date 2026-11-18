@@ -4,19 +4,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101a22">
+<meta name="theme-color" content="#171323">
 <title>Shotcock -- Golf Improvement</title>
 <style>
 :root {
-  --bg:#101a22;
-  --panel:#192731;
-  --panel2:#21343e;
-  --green:#b8ef63;
-  --green2:#8bc83e;
-  --text:#f1f5f2;
-  --muted:#a5b4b9;
-  --line:#344650;
-  --red:#ff9387;
+  --bg:#171323;
+  --panel:#241b35;
+  --panel2:#302342;
+  --green:#f05bb5;
+  --green2:#b65ce2;
+  --text:#fbf5ff;
+  --muted:#b9a9c8;
+  --line:#49365d;
+  --red:#ff829f;
   --radius:18px;
 }
 * {box-sizing:border-box}
@@ -69,16 +69,16 @@ h2 {font-size:21px;letter-spacing:-.4px;margin-bottom:14px}
 h3 {font-size:16px;margin-bottom:8px}
 .subtitle {color:var(--muted);margin-bottom:22px}
 .hero {
-  background:linear-gradient(125deg,#2c4938,#1a302c 58%,#21343e);
-  border:1px solid #47654c;border-radius:24px;padding:24px;
+  background:linear-gradient(125deg,#7545bd,#39234f 58%,#241b35);
+  border:1px solid #8954bd;border-radius:24px;padding:24px;
   margin-bottom:18px;position:relative;overflow:hidden;
 }
 .hero:after {
-  content:"";position:absolute;width:190px;height:190px;border:28px solid #b8ef6314;
+  content:"";position:absolute;width:190px;height:190px;border:28px solid #f05bb51c;
   border-radius:50%;right:-60px;top:-65px;pointer-events:none;
 }
 .eyebrow {font-size:11px;text-transform:uppercase;letter-spacing:1.8px;color:var(--green);font-weight:850}
-.hero p {color:#d0dfd5;max-width:530px;margin-bottom:18px}
+.hero p {color:#eadcf4;max-width:530px;margin-bottom:18px}
 .hero-actions {display:flex;gap:9px;flex-wrap:wrap}
 .grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
 .two-col {display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
@@ -104,23 +104,23 @@ h3 {font-size:16px;margin-bottom:8px}
 .item-sub {font-size:12px;color:var(--muted);margin-top:3px}
 .pill {
   display:inline-flex;align-items:center;gap:5px;border-radius:999px;
-  background:#b8ef6319;color:var(--green);font-size:11px;font-weight:800;
+  background:#f05bb51c;color:var(--green);font-size:11px;font-weight:800;
   padding:5px 9px;
 }
 .empty {padding:18px 0;color:var(--muted);font-size:14px}
-.progress {height:8px;border-radius:99px;background:#344650;overflow:hidden;margin:10px 0}
+.progress {height:8px;border-radius:99px;background:#49365d;overflow:hidden;margin:10px 0}
 .progress span {height:100%;display:block;background:var(--green);border-radius:99px}
 form {display:grid;gap:13px}
 .form-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .field {display:grid;gap:6px;min-width:0}
 .field.full {grid-column:1/-1}
-label {font-size:12px;font-weight:750;color:#d1dce0}
+label {font-size:12px;font-weight:750;color:#e5d8ef}
 input,select,textarea {
   width:100%;min-width:0;border:1px solid var(--line);border-radius:11px;
-  background:#111e26;color:var(--text);padding:11px 12px;
+  background:#1d172b;color:var(--text);padding:11px 12px;
 }
 textarea {resize:vertical;min-height:82px}
-input::placeholder,textarea::placeholder {color:#778b94}
+input::placeholder,textarea::placeholder {color:#8e7c9f}
 .actions {display:flex;gap:8px;flex-wrap:wrap}
 .list-row {display:flex;align-items:center;justify-content:space-between;gap:12px}
 .club-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
